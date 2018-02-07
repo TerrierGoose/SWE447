@@ -13,7 +13,7 @@ function init() {
     return;
   }
 
-  gl.clearColor( 0.8, 0.8, 0.8, 1.0 );
+  gl.clearColor( 0.4, 0.4, 0.4, 1.0 );
   gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
@@ -26,7 +26,7 @@ function render() {
 
   angle += 2.0; // degrees
 
-  cube.MV = rotate( angle, [1, 1, 0] );
+  cube.MV = rotate( angle, [1, 1, 1] );
 
   cube.render();
 
