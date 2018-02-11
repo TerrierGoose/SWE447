@@ -12,7 +12,7 @@ function init() {
     return;
   }
 
-  gl.clearColor( 0.9, 0.9, 0.9, 1.0 );
+  gl.clearColor( 0.1, 0.1, 0.1, 1.0 );
   gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
