@@ -13,7 +13,7 @@ function init() {
     return;
   }
 
-  gl.clearColor( 0.4, 0.4, 0.4, 1.0 );
+  gl.clearColor( 0.133, 0.866, 0.811, 1.0 );
   gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
@@ -24,10 +24,10 @@ function init() {
 function render() {
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
 
-  angle += 2.0; // degrees
+  angle += 3.0; // degrees
 
   cube.MV = rotate( angle, [1, 1, 0] );
-
+  //mat4.rotate(modelViewMatrix, modelViewMatrix, cubeRotation * .7, [0, 1, 0]);
   cube.render();
 
   requestAnimationFrame( render ); // schedule another call to render()
