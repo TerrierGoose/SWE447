@@ -19,7 +19,7 @@ function init() {
 
   render();
   
-  consol.log("Button Pressed!!!!")
+  console.log("Button Pressed!!!!")
   //document.getElementById("xButton").onclick = function() {
     //rotationAxis = xAxis;
   //}
