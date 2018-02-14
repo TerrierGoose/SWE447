@@ -7,16 +7,7 @@ function init() {
 
   gl = WebGLUtils.setupWebGL( canvas );
 
-   document.getElementById("xButton").onclick = function() {
-      //rotationAxis = xAxis;
-      console.log("Button Pressed!!!!");
-  }
-   document.getElementById("slider").onchange = function() {
-    //speed = 100 - event.srcElement.value;
-           console.log("sliderSlid!!!!");
-
-  }
-
+   
   if ( !gl ) {
     alert("Unable to setup WebGL");
     return;
@@ -29,6 +20,16 @@ function init() {
 
   render();
   
+  document.getElementById("xButton").onclick = function() {
+      //rotationAxis = xAxis;
+      console.log("Button Pressed!!!!");
+  }
+   document.getElementById("slider").onchange = function() {
+    //speed = 100 - event.srcElement.value;
+           console.log("sliderSlid!!!!");
+
+  }
+
 }
 
 function render() {
