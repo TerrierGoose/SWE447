@@ -23,6 +23,11 @@ function init() {
     //rotationAxis = xAxis;
       console.log("Button Pressed!!!!");
   }
+   document.getElementById("slider").onchange = function() {
+    //speed = 100 - event.srcElement.value;
+           console.log("sliderSlid!!!!");
+
+  }
 }
 
 function render() {
