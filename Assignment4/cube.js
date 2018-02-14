@@ -8,7 +8,7 @@ function init() {
   gl = WebGLUtils.setupWebGL( canvas );
 
    document.getElementById("xButton").onclick = function() {
-      rotationAxis = xAxis;
+      //rotationAxis = xAxis;
       console.log("Button Pressed!!!!");
   }
    document.getElementById("slider").onchange = function() {
