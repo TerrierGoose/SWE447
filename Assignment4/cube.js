@@ -22,7 +22,7 @@ function init() {
   consol.log("Button Pressed!!!!")
   //document.getElementById("xButton").onclick = function() {
     //rotationAxis = xAxis;
-  }
+  //}
 }
 
 function render() {
