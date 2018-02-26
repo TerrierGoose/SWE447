@@ -7,9 +7,8 @@
 function Sphere( slices, stacks, vertexShaderID, fragmentShaderID ) { 
     var i, j;  // loop counters
 
-    var program = initShaders(gl,
-        vertexShader || "Sphere-vertex-shader",
-        fragmentShader || "Sphere-fragment-shader");
+    var program = initShaders(gl, vertShaderID, fragShaderID);
+        
 
     var nSlices = slices || 20; // Default number of slices
     var nStacks = stacks || 12; // Default number of stacks
