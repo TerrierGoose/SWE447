@@ -175,7 +175,7 @@ function render() {
   ///////
   // Jupiter
   ///////
-  //renderPlanet("Jupiter", 1.6, 0.45, ms);
+  renderPlanet("Jupiter", 1.6, 0.45, ms);
   ///////
   // Saturn
   ///////
