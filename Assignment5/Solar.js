@@ -151,12 +151,12 @@ function render() {
   // Planets
   //////////
   
-  try
+    try
   {
   // Earth
-  renderPlanet("Earth", 0.5, ms, push = true, pop = false);
+  renderPlanet("Earth", 1.4, 0.5, ms, push=true, pop=false);
   // Moon
-  renderPlanet("Moon", 0.3, ms, push = false);
+  renderPlanet("Moon", 26, 0.3, ms, push=false);
   }
   
   catch(e)
