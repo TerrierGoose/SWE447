@@ -158,7 +158,7 @@ function render() {
   ///////
   // Moon
   ///////
-  renderPlanet("Moon", 2.6, 0.2, ms, push = false, pop = true);
+  renderPlanet("Moon", 2.6, 0.2, ms, push = false, pop = false);
   ///////
   // Mercury
   ///////
