@@ -191,7 +191,7 @@ function render() {
   ///////
   //Pluto
   ///////
-  renderPlanet("Pluto", 1, 1, ms;
+  renderPlanet("Pluto", 1, 1, ms);
   }
   
   catch(e)
