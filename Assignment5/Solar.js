@@ -223,7 +223,7 @@ function resize() {
   P = perspective(fovy, aspect, near, far);
 }
 
-function renderPlanet(name, radiusScale, ms, pushStack = true, popStack = true)
+function renderPlanet(name, distanceScale, radiusScale, ms, pushStack=true, popStack=true)
 {
   if(pushStack){
     ms.push();
