@@ -158,7 +158,7 @@ function render() {
   ///////
   // Moon
   ///////
-  renderPlanet("Moon", 2.6, 0.2, ms, push = false, pop = false);
+  renderPlanet("Moon", 2.6, 0.2, ms, push = false);
   ///////
   // Mercury
   ///////
@@ -182,11 +182,11 @@ function render() {
   ///////
   // Uranus
   ///////
-  renderPlanet("Uranus", 1.3, 0.55, ms);
+  renderPlanet("Uranus", 1, 0.55, ms);
   ///////
   // Neptune
   ///////
-  renderPlanet("Neptune",1.4, 0.35, ms);
+  renderPlanet("Neptune",1.3, 0.35, ms);
   ///////
   //Pluto
   ///////
