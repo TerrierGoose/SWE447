@@ -42,7 +42,7 @@ var far = 120;      // far clipping plane's distance
 var time = 0.0;      // time, our global time constant, which is 
                      // incremented every frame
 var timeDelta = 0.5; // the amount that time is updated each fraime
-
+var angle = 0;
 //---------------------------------------------------------------------------
 //
 //  init() - scene initialization function
@@ -69,7 +69,7 @@ function init() {
     // appropriate place in the Planets dictionary.  And to simplify the code
     // assign that same value to the local variable "p", for later use.
 
-    var planet = Planets[name] = new Sphere();
+    var planet = Planets[name] = new Sphere(gl, 10, 10, "Sphere-vertex-shader", "Sphere-fragment-shader");
 
     // For each planet, we'll add a new property (which itself is a 
     // dictionary) that contains the uniforms that we will use in
@@ -81,6 +81,9 @@ function init() {
       MV : gl.getUniformLocation(planet.program, "MV"),
       P : gl.getUniformLocation(planet.program, "P"),
     };
+    SolarSystem[name].currentTranslation = 0;
+    SolarSystem[name].distance *= 30;
+    SolarSystem[name].radius *= 5;
   }
 
   resize();
@@ -95,6 +98,7 @@ function init() {
 
 function render() {
   time += timeDelta;
+  angle += timeDelta;
 
   var ms = new MatrixStack();
 
@@ -135,39 +139,33 @@ function render() {
   // system (and hence, has no translation to its location).
 
   ms.push();
-  ms.scale(data.radius);
+  ms.scale(data.radius, data.radius, data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
   gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
   gl.uniform4fv(planet.uniforms.color, flatten(data.color));
   planet.render();
   ms.pop();
-
+  
+  //////////
+  // Planets
+  //////////
+  
+  try
+  {
   // Earth
-
-  name = "Earth";
-  planet = Planets[names];
-  data = SolarSystemName[name];
+  renderPlanet("Earth", 0.5, ms, push = true, pop = false);
+  // Moon
+  renderPlanet("Moon", 0.3, ms, push = false);
+  }
   
-  planet.PointMode = false;
-  
-  ms.push();
-  ms.rotate(data.year * time, [0, 0, 1];
-  ms.translate(data.distance * 10, 0, 0)
-  
-  ms.push();
-  ms.scale(data.radius);
-  ms.pop;
-  
-  gl.useProgram(planet.program);
-  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
-  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
-  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
-  planet.render();
-  ms.pop();
-  
-  //Moon
-  
+  catch(e)
+{
+  if(catchSwitch){
+     alert(e.message);
+     catchSwitch= !catchSwitch;
+  }
+}
   
   window.requestAnimationFrame(render);
 }
@@ -189,6 +187,29 @@ function resize() {
   P = perspective(fovy, aspect, near, far);
 }
 
+function renderPlanet(name, distanceScale, radiusScale, ms, pushStack=true, popStack=true)
+{
+  if(pushStack){
+    ms.push();
+  }
+
+  planet = Planets[name];
+  data = SolarSystem[name];
+
+  data.currentTranslation += (timeDelta/data.year);
+  ms.mult(translate(Math.cos(data.currentTranslation)*data.distance,0,Math.sin(data.currentTranslation)*data.distance));
+  ms.mult(scalem(data.radius * radiusScale, data.radius * radiusScale, data.radius * radiusScale));
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.PointMode = false;
+  planet.render();
+
+  if(popStack){
+    ms.pop();
+  }
+}
 //---------------------------------------------------------------------------
 //
 //  Window callbacks for processing various events
