@@ -162,35 +162,35 @@ function render() {
   ///////
   // Mercury
   ///////
-  renderPlanet("Mercury", 1.8, 1.8, ms, push = false, pop = true);
+  renderPlanet("Mercury", 1.8, 1.8, ms);
   ///////
   // Venus
   ///////
-  renderPlanet("Venus", 1,0.52, ms, push = false, pop = true);
+  renderPlanet("Venus", 1,0.52, ms);
   ///////
   // Mars
   ///////
-  renderPlanet("Mars", 1.4, 0.58,ms, push = false, pop = true);
+  renderPlanet("Mars", 1.4, 0.58,ms);
   ///////
   // Jupiter
   ///////
-  renderPlanet("Jupiter", 1.6, 0.45,ms, push = false, pop = true);
+  renderPlanet("Jupiter", 1.6, 0.45, ms);
   ///////
   // Saturn
   ///////
-  renderPlanet("Saturn", 1.5, 0.6, ms, push = false, pop = true);
+  renderPlanet("Saturn", 1.5, 0.6, ms);
   ///////
   // Uranus
   ///////
-  renderPlanet("Uranus", 1, 0.55, ms, push = false, pop = true);
+  renderPlanet("Uranus", 1, 0.55, ms);
   ///////
   // Neptune
   ///////
-  renderPlanet("Neptune",1.3, 0.35, ms, push = false, pop = true);
+  renderPlanet("Neptune",1.3, 0.35, ms);
   ///////
   //Pluto
   ///////
-  renderPlanet("Pluto", 1, 1, ms, push = false, pop = true);
+  renderPlanet("Pluto", 1, 1, ms;
   }
   
   catch(e)
