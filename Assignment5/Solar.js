@@ -36,7 +36,7 @@ var V;  // matrix storing the viewing transformation
 // Projection transformation parameters
 var P;  // matrix storing the projection transformation
 var near = 10;      // near clipping plane's distance
-var far = 120;      // far clipping plane's distance
+var far = 500;      // far clipping plane's distance
 
 // Animation variables
 var time = 0.0;      // time, our global time constant, which is 
@@ -156,39 +156,39 @@ function render() {
   ///////
   // Earth
   ///////
-  renderPlanet("Earth", 1.4, 0.5, ms, push = true, pop = false);
+  renderPlanet("Earth", 1.2, 0.4, ms, push = true, pop = false);
   ///////
   // Moon
   ///////
-  renderPlanet("Moon", 26, 0.3, ms, push = false, pop = true);
+  renderPlanet("Moon", 26, 0.2, ms, push = true, pop = true);
   ///////
   // Mercury
   ///////
-  renderPlanet("Mercury",1.7, 1.8, ms);
+  renderPlanet("Mercury", 1.8, 1.8, ms);
   ///////
   // Venus
   ///////
-  renderPlanet("Venus",1.2, 0.48, ms);
+  renderPlanet("Venus", 1,0.52, ms);
   ///////
   // Mars
   ///////
-  renderPlanet("Mars",1.3, 0.6,ms);
+  renderPlanet("Mars", 1.4, 0.58,ms);
   ///////
   // Jupiter
   ///////
-  renderPlanet("Jupiter",1.5, 0.4 ,ms);
+  renderPlanet("Jupiter", 1.6, 0.45,ms);
   ///////
   // Saturn
   ///////
-  renderPlanet("Saturn",1.5,0.4 ,ms);
+  renderPlanet("Saturn", 1.5, 0.6,ms);
   ///////
   // Uranus
   ///////
-  renderPlanet("Uranus",1, 0.5, ms);
+  renderPlanet("Uranus", 1.3, 0.55, ms);
   ///////
   // Neptune
   ///////
-  renderPlanet("Neptune",1.35, 0.3, ms);
+  renderPlanet("Neptune",1.4, 0.35, ms);
   ///////
   //Pluto
   ///////
