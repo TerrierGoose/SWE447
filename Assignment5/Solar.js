@@ -23,11 +23,11 @@ var Planets = {
   Earth : undefined,
   Moon : undefined,
   Mars : undefined,
-  Jupiter : undefined,
-  Saturn : undefined,
-  Uranus : undefined,
-  Neptune : undefined,
-  Pluto : undefined
+  //Jupiter : undefined,
+  //Saturn : undefined,
+  //Uranus : undefined,
+ //Neptune : undefined,
+  //Pluto : undefined
 };
 
 // Viewing transformation parameters
@@ -171,27 +171,27 @@ function render() {
   ///////
   // Mars
   ///////
-  renderPlanet("Mars", 1.4, 0.58,ms);
+  //renderPlanet("Mars", 1.4, 0.58,ms);
   ///////
   // Jupiter
   ///////
-  renderPlanet("Jupiter", 1.6, 0.45, ms);
+  //renderPlanet("Jupiter", 1.6, 0.45, ms);
   ///////
   // Saturn
   ///////
-  renderPlanet("Saturn", 1.5, 0.6, ms);
+  //renderPlanet("Saturn", 1.5, 0.6, ms);
   ///////
   // Uranus
   ///////
-  renderPlanet("Uranus", 1, 0.55, ms);
+  //renderPlanet("Uranus", 1, 0.55, ms);
   ///////
   // Neptune
   ///////
-  renderPlanet("Neptune",1.3, 0.35, ms);
+  //renderPlanet("Neptune",1.3, 0.35, ms);
   ///////
   //Pluto
   ///////
-  renderPlanet("Pluto", 1, 1, ms);
+  //renderPlanet("Pluto", 1, 1, ms);
   }
   
   catch(e)
