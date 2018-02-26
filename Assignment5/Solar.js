@@ -42,6 +42,7 @@ var far = 150;      // far clipping plane's distance
 var time = 0.0;      // time, our global time constant, which is 
                      // incremented every frame
 var timeDelta = 0.01; // the amount that time is updated each fraime
+angle = 0;
 //---------------------------------------------------------------------------
 //
 //  init() - scene initialization function
