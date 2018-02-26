@@ -4,7 +4,7 @@
 
 "use strict";
 
-function Sphere( slices, stacks, vertexShader, fragmentShader ) { 
+function Sphere( slices, stacks, vertexShaderID, fragmentShaderID ) { 
     var i, j;  // loop counters
 
     var program = initShaders(gl,
