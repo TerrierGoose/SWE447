@@ -42,7 +42,6 @@ var far = 150;      // far clipping plane's distance
 var time = 0.0;      // time, our global time constant, which is 
                      // incremented every frame
 var timeDelta = 0.01; // the amount that time is updated each fraime
-var angle = 0;
 //---------------------------------------------------------------------------
 //
 //  init() - scene initialization function
@@ -159,7 +158,7 @@ function render() {
   ///////
   // Moon
   ///////
-  renderPlanet("Moon", 26, 0.2, ms, push = true, pop = true);
+  renderPlanet("Moon", 2.6, 0.2, ms, push = false, pop = true);
   ///////
   // Mercury
   ///////
