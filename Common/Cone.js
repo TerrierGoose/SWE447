@@ -22,9 +22,9 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
     this.positions = { numComponents : 3 };
     this.colors = {numComponents : 3 };
 
-    // top of cone/ color
-    var positions = [ 0.0, 0.0, 0.0 ];
-    var colors = [0.0, 0.0, 1.0];
+    //Color
+    var positions = [ 0.5, 0.0, 0.5 ];
+    var colors = [0.5, 0.0, 1.0];
     var indices = [ 0 ];
     
     for ( var i = 0; i < n; ++i ) {
