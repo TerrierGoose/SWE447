@@ -17,17 +17,7 @@ var gl;
 // around the Sun. 
 
 var Planets = {
-// 	Sun : undefined,
-// 	Mercury : undefined,
-// 	Venus : undefined,
-// 	Earth : undefined,
-// 	Moon : undefined,
-	Mars : undefined,
-// 	Jupiter : undefined,
-// 	Saturn : undefined,
-// 	Uranus : undefined,
-// 	Neptune : undefined,
-// 	Pluto : undefined
+	Mars : undefined
 };
 
 // Viewing transformation parameters
