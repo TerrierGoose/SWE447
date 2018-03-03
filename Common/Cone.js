@@ -23,20 +23,20 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
     this.colors = {numComponents : 3 };
 
     //Color
-    var positions = [ 0.5, 0.0, 0.5 ];
+    var positions = [ 0.0, 0.0, 0.0 ];
     var colors = [0.5, 0.0, 1.0];
     var indices = [ 0 ];
     
     for ( var i = 0; i < n; ++i ) {
         theta = i * dTheta;
-        positions.push( Math.cos(theta), Math.sin(theta), 4.0 );// 4.0 inverts cone in to different lenght of shape
+        positions.push( Math.cos(theta), Math.sin(theta), 2.0 );// 4.0 inverts cone in to different lenght of shape
         colors.push(1.0, 1.0, 0.0);
         
         indices.push(n - i);
     }
     // Size of CONE/ Stretch/Color
     positions.push( 0.0, 0.0, 3.0 );
-    colors.push(1.0, 1.0, 1.0);
+    colors.push(0.0, 0.7, 0.0);
     
     
     indices.push(n);
