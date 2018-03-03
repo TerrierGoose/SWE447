@@ -24,56 +24,94 @@ var speed = 1;
 var stoprotating = 0;
 
 function init() {
-    var canvas = document.getElementById( "webgl-canvas" );
-
-    gl = WebGLUtils.setupWebGL( canvas );
-
+    canvas = document.getElementById("webgl-canvas");
+    gl = WebGLUtils.setupWebGL(canvas);
+    
     if ( !gl ) {
         alert("Unable to setup WebGL");
         return;
     }
     
+    document.getElementById("cBox").onclick = function() {
+        /*
+         var chk=document.getElementById("cBox").value;
+         console.log("Clicked, new value = " + chk); // chk.checked
+         if (chk == 0) document.getElementById("cBox").innerHTML = "1";
+         //else document.getElementById("cBox").innerHTML = 0;
+         //dAngle = 0.0;
+         */
+        if(document.getElementById("cBox").checked == true) {
+            dAngle = 0.0;
+            stoprotating = 1;
+        }
+        else {
+            dAngle = 2.0;
+            stoprotating = 0;
+        }
+    }
+    
+    document.getElementById("xButton").onclick = function() {
+        rotationAxis = xAxis;
+        
+    }
+    
+    document.getElementById("yButton").onclick = function() {
+        rotationAxis = yAxis;
+    }
+    
+    document.getElementById("slider").onchange = function(event) {
+        speed = event.target.value / 10; //100 - event.srcElement.value;
+    };
     
     canvas.onmousedown = function handleMouseDown(event) {
-        console.log("mouseDown")
         mouseDown = true;
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
     }
-
+    
     document.onmouseup = function handleMouseUp(event) {
-        console.log("mouseUp")
         mouseDown = false;
         if (stoprotating) dAngle = 0.0;
         return;
-
     }
-
+    
     document.onmousemove = function handleMouseMove(event) {
-    if (!mouseDown) {
-      if(stoprotating) dAngle = 0.0;
-      return;
-    }
+        if (!mouseDown) {
+            if(stoprotating) dAngle = 0.0;
+            return;
+        }
+        var newX = event.clientX;
+        var newY = event.clientY;
         
-    console.log("moving")
-    var newX = event.clientX;
-    var newY = event.clientY;
-
-    var deltaX = newX - lastMouseX;
-    var deltaY = newY - lastMouseY;
-    dAngle = degToRad(deltaX + deltaY) * Math.PI * 5;
-    lastMouseX = newX;
-    lastMouseY = newY;
-    }  
-
-    gl.clearColor( 1.0, 1.0, 0.0, 1.0 );
-    cone = Cone(gl,150);
-    render();
-}
-
-function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
-    cone.render();
+        var deltaX = newX - lastMouseX;
+        var deltaY = newY - lastMouseY;
+        dAngle = degToRad(deltaX + deltaY) * Math.PI * 5;
+        lastMouseX = newX;
+        lastMouseY = newY;
+    }
+    
+    
+    document.onkeydown = function handleKeyDown(event) {
+        mkey = event.which || event.keyCode;
+        switch( mkey ) { // String.fromCharCode(mkey)
+            case 33 : zvalue -= 0.05; break; // Page Up
+            case 34 : zvalue += 0.05; break; // Page Down
+            case 37 : offset = [ -3.0,  0.0, 0.0 ]; break; // Left cursor key
+            case 39 : offset = [  3.0,  0.0, 0.0 ]; break; // right cursor key
+            case 38 : offset = [ 0.0,  3.0, 0.0 ]; break; // Up cursor key
+            case 40 : offset = [ 0.0,  -3.0, 0.0 ]; break; // Down cursor key
+            case 27 : offset = [ 0.0,  0.0, 0.0 ]; dAngle = 0; break; // Esc key
+            default : /*alert("You pressed the key code = " + mkey);*/ break;
+        }
+    }
+    
+    gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
+    gl.enable(gl.DEPTH_TEST);
+    
+    cone = new Cone(gl);
+    resize();
+    
+    window.requestAnimationFrame(render);
 }
 
 function render() {
@@ -84,7 +122,7 @@ function render() {
     var axis = undefined; //[ 1.0, 1.0, 1.0 ];
     if (rotationAxis != undefined) axis = rotationAxis;
     else axis = [ 1.0, 1.0, 1.0 ];
-  
+    
     ms = new MatrixStack();
     ms.push();
     ms.load(V);
@@ -93,9 +131,18 @@ function render() {
     ms.scale(1.0, 1.0, 1.0);
     cone.MV = ms.current();
     ms.pop();
-
+    
     cone.render();
     window.requestAnimationFrame(render);
+}
+
+function resize() {
+    var width = canvas.clientWidth,
+    height = canvas.clientHeight;
+    gl.viewport(0, 0, width, height);
+    var fovy = 120.0; // degrees
+    aspect = width/height;
+    cone.P = perspective(fovy, aspect, near, far);
 }
 
 function degToRad(degrees) {
@@ -103,3 +150,4 @@ function degToRad(degrees) {
 }
 
 window.onload = init;
+window.onresize = resize;
