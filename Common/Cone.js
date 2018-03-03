@@ -36,7 +36,7 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
     }
     // Size of CONE/ Stretch/Color
     positions.push( 0.0, 0.0, 3.0 );
-    colors.push(1.0, 1.0, 0.0);
+    colors.push(1.0, 1.0, 1.0);
     
     
     indices.push(n);
