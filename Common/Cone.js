@@ -24,7 +24,7 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
 
     // top of cone/ color
     var positions = [ 0.0, 0.0, 0.0 ];
-    var colors = [1.0, 0.0, 1.0];
+    var colors = [1.0, 1.0, 1.0];
     var indices = [ 0 ];
     
     for ( var i = 0; i < n; ++i ) {
