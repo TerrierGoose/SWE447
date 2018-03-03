@@ -77,9 +77,7 @@ function init() {
 		planet.uniforms = { 
 			color : gl.getUniformLocation(planet.program, "color"),
 			MV : gl.getUniformLocation(planet.program, "MV"),
-			P : gl.getUniformLocation(planet.program, "P"),
-			lightPos : gl.getUniformLocation(planet.program, "lightPos"),
-			ambientLight : gl.getUniformLocation(planet.program, "ambientLight")
+			P : gl.getUniformLocation(planet.program, "P"),			
 		};
 	}
 
@@ -94,8 +92,7 @@ function init() {
 //
 
 function render() {		
-	//time += timeDelta;
-	//Obatin time with respect to the current fps;
+
 	time = performance.now() * 0.001 + orbitShift;
 
 	var ms = new MatrixStack();
