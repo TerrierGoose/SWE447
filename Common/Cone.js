@@ -29,8 +29,8 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
     
     for ( var i = 0; i < n; ++i ) {
         theta = i * dTheta;
-        positions.push( Math.cos(theta), Math.sin(theta), 2.0 );// 4.0 inverts cone in to different lenght of shape
-        colors.push(1.0, 1.0, 0.0);
+        positions.push( Math.cos(theta), Math.sin(theta), 4.0 );
+        colors.push(0.5, 0.5, 0.0);
         
         indices.push(n - i);
     }
