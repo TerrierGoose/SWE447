@@ -1,5 +1,5 @@
 var SolarSystem = {
-  Sun : {
+  Mars : {
     radius : 3.2,  
     distance : 0,
     year : 0,
