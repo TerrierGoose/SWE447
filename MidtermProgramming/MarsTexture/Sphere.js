@@ -188,10 +188,7 @@ function Sphere( slices, stacks, vertexShader, fragmentShader ) {
 	}
 
 	//TODO: Figure out how to handle CORS domain errors later
-	//Utilize: --allow-file-access-from-files
-	//		   --disable-web-security
-	//         --user-data-dir
-	//diffuseTexture.image.src = "../Images/Box_Diffuse.png";
+
 	diffuseTexture.image.src = "mars.jpg";
 
     // Initialize our externally viewable variables
