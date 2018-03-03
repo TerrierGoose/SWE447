@@ -133,89 +133,11 @@ function render() {
 
 	var name, planet, data;
 
-	name = "Sun";
-	planet = Planets[name];
-	data = SolarSystem[name];
-
-	// Set PointMode to true to render all the vertices as points, as
-	// compared to filled triangles.  This can be useful if you think
-	// your planet might be inside another planet or the Sun.  Since the
-	// "planet" variable is set for each object, you will need to set this
-	// for each planet separately.
-
-	planet.PointMode = false;
-
-	// Use the matrix stack to configure and render a planet.  How you rener
-	// each planet will be similar, but not exactly the same.  In particular,
-	// here, we're only rendering the Sun, which is the center of the Solar
-	// system (and hence, has no translation to its location).
-
-	ms.push();
-	ms.scale(data.radius);
-	gl.useProgram(planet.program);
-	gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
-	gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
-	gl.uniform4fv(planet.uniforms.color, flatten(data.color));
-	gl.uniform3fv(planet.uniforms.lightPos, flatten(sunPos));
-	gl.uniform3fv(planet.uniforms.ambientLight, flatten(ambient));
-	planet.render();
-	ms.pop();
 	
-	renderPlanet("Mercury", ms);
-	
-	renderPlanet("Venus", ms);
-	
-	//Utilize the render pipeline for the Earth and it's Moon
-	name = "Earth";
-	planet = Planets[name];
-	data = SolarSystem[name];
-	
-	planet.PointMode = false;
-	
-	ms.push();
-	ms.rotate(time * orbitScalar / data.year, [0.0, 1.0, 0.0]);
-	ms.translate(data.distance, 0, 0);
-	ms.push();
-	ms.scale(data.radius);
-	gl.useProgram(planet.program);
-	gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
-	gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
-	gl.uniform4fv(planet.uniforms.color, flatten(data.color));
-	gl.uniform3fv(planet.uniforms.lightPos, flatten(sunPos));
-	gl.uniform3fv(planet.uniforms.ambientLight, flatten(ambient));
-	planet.render();
-	ms.pop();
-	
-	//Borrow some of the transformations for the Earth to render the moon
-	name = "Moon";
-	planet = Planets[name];
-	data = SolarSystem[name];
-	
-	planet.PointMode = false;
-	
-	ms.rotate(time * orbitScalar / data.year, [0.0, 1.0, 0.0]);
-	ms.translate(data.distance, 0, 0);
-	ms.scale(data.radius);
-	gl.useProgram(planet.program);
-	gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
-	gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
-	gl.uniform4fv(planet.uniforms.color, flatten(data.color));
-	gl.uniform3fv(planet.uniforms.lightPos, flatten(sunPos));
-	gl.uniform3fv(planet.uniforms.ambientLight, flatten(ambient));
-	planet.render();
-	ms.pop();
 
 	renderPlanet("Mars", ms);
 	
-	renderPlanet("Jupiter", ms);
 	
-	renderPlanet("Saturn", ms);
-	
-	renderPlanet("Uranus", ms);
-	
-	renderPlanet("Neptune", ms);
-
-	renderPlanet("Pluto", ms);
 		
 	window.requestAnimationFrame(render);
 }
@@ -252,12 +174,13 @@ function resize() {
 
 	gl.viewport(0, 0, w, h);
 
-	var fovy = 80; // degrees
+	var fovy = 60; // degrees
 	var aspect = w / h;
 
 	P = perspective(fovy, aspect, near, far);
 	
 	//Add in a view angle for better viewing
+	//P = mult(P, lookAt([0, 0.5*(near + far), 0], [0, 0, -0.5*(near + far)], [0, 1, 0]));
 	P = mult(P, lookAt([0.0, 0.3*(near + far), 0.3*(near + far)], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0]));
 }
 
