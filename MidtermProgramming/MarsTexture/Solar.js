@@ -23,11 +23,11 @@ var Planets = {
 	Earth : undefined,
 	Moon : undefined,
 	Mars : undefined,
-	Jupiter : undefined,
-	Saturn : undefined,
-	Uranus : undefined,
-	Neptune : undefined,
-	Pluto : undefined
+// 	Jupiter : undefined,
+// 	Saturn : undefined,
+// 	Uranus : undefined,
+// 	Neptune : undefined,
+// 	Pluto : undefined
 };
 
 // Viewing transformation parameters
