@@ -75,7 +75,7 @@
 		}
 			
 		function initGraphics() {
-			camera = new THREE.PerspectiveCamera( 1200, window.innerWidth / window.innerHeight, 0.02, 1000 );
+			camera = new THREE.PerspectiveCamera( 800, window.innerWidth / window.innerHeight, 0.02, 1000 );
 			scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0x30756B );
 			
@@ -138,7 +138,7 @@
 			var objLoader = new THREE.OBJLoader();
 			//objLoader.setPath('models/)
 			var bucket = objLoader.load('models/Bucket.obj', function(object) {
-				object.position.set(0,2.5,-10);
+				object.position.set(0,2.5,-5);
 				object.scale.set(.2,.2,.2)
 				object.rotation.x = Math.PI /3.5;
 				
@@ -147,7 +147,7 @@
 			});
 			//Load Bucket2
 			objLoader.load('models/Bucket.obj', function(object) {
-				object.position.set(15,2.5,-10);
+				object.position.set(15,2.5,-15);
 				object.scale.set(.2,.2,.2)
 				object.rotation.x = Math.PI / 4;
 				object.rotation.z = Math.PI / 6;
@@ -157,7 +157,7 @@
 			});
 			//Load Bucket3
 			objLoader.load('models/Bucket.obj', function(object) {
-				object.position.set(-15,2.5,-10);
+				object.position.set(-15,2.5,-20);
 				object.scale.set(.2,.2,.2)
 				object.rotation.x = Math.PI / 4;
 				object.rotation.z -= Math.PI / 6;
@@ -236,7 +236,7 @@
 				quat.set( 0, 0, 0, 1 );
 				var ballBody = createRigidBody( ball, ballShape, ballMass, pos, quat );
 				pos.copy( raycaster.ray.direction );
-				pos.multiplyScalar( 20 );
+				pos.multiplyScalar( 25 );
 				ballBody.setLinearVelocity( new Ammo.btVector3( pos.x, pos.y, pos.z ) );
 			}, false );
 		}
